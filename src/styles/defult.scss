@@ -1,0 +1,158 @@
+@import "./variables";
+
+//清空标签和页面的默认样式
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, em, i {
+  font-weight: 100;
+  font-style: normal;
+}
+
+ul, ol, li {
+  list-style-type: none;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+  outline: 0;
+}
+
+p {
+  display: inline !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+//解决vue页面刷新出现闪烁
+[v-cloak] {
+  display: none;
+}
+
+//flex布局
+.d-flex {
+  display: flex;
+}
+
+//切换主轴方向
+.flex-d {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+//多行显示
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+//循环flex的水平方向
+@each $flexKey, $flexValue in $flex-jc {
+  .jc-#{$flexKey} {
+    justify-content: $flexValue;
+  }
+}
+
+//垂直方向
+@each $flexKey, $flexValue in $flex-ai {
+  .ai-#{$flexKey} {
+    align-items: $flexValue;
+  }
+}
+
+//字体大小
+@each $sizeKey, $size in $sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size;
+  }
+}
+
+//元素宽度
+@each $distanceKey, $distance in $distance {
+  @each $sizesKey, $size in $distance-sizes {
+    #{$distanceKey}-#{$sizesKey} {
+      #{$distance}: $size
+    }
+  }
+}
+
+// 单行文字超出 省略号显示
+.overflow-omit1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+// 2行文字超出
+.overflow-omit2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; //多行在这里修改数字即可
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+// 2行文字超出
+.overflow-omit3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; //多行在这里修改数字即可
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+
+// 上拉固定元素
+.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+//手
+.cursor {
+  cursor: pointer
+}
+
+//滚动条样式
+::-webkit-scrollbar { /*滚动条整体样式*/
+  width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #535353;
+}
+
+::-webkit-scrollbar-track { /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #EDEDED;
+}
+
+
+//定义混入  使用 @include border-radius()
+@mixin border-radius($radius: 5px, $borderRadius: 8px) {
+  border: {
+    radius: $radius;
+    top: $borderRadius solid #ff0;
+    bottom: $borderRadius solid #f00;
+    left: $borderRadius solid #00f;
+    right: $borderRadius solid #888;
+  }
+}

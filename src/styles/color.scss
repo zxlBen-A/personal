@@ -1,0 +1,23 @@
+:root {
+  //可以不用写
+  --baseColor: #fff;
+  --color: #ab8a8a;
+
+
+  --theme-bg: #fff;
+  --theme-color: rgb(51, 50, 50);
+  --theme-img-bg: #fff;
+  --theme-boder-color: #d6d6d6;
+}
+
+$baseColor: var(--baseColor);
+$Color: var(--color);
+
+///* 暗黑：dark */
+//[data-theme='dark'] {
+//  --theme-bg: rgb(51, 50, 50);
+//  --theme-color: #fff;
+//  --theme-boder-color: #fff;
+//}
+
+$blue: #3385ff;
