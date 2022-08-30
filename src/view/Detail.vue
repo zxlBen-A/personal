@@ -1,6 +1,6 @@
 <template>
   <!--  pc-->
-  <div class="d-flex" style="margin-top: 20px" v-if="!isShow">
+  <div class="d-flex columnData" v-if="!isShow">
     <div class="mr-16">
       <Article></Article>
     </div>
@@ -21,7 +21,11 @@ import isShow from "../utils/judgeTheClient";
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.columnData {
+  margin-top: 20px
+}
+
 .mobile-detail {
   margin: 20px;
 }
