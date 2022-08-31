@@ -20,7 +20,7 @@ export default defineConfig({
         AutoImport({
             imports: ["vue", "vue-router"], // 自动导入vue和vue-router相关函数
             dts: "src/auto-import.d.ts", // 生成 `auto-import.d.ts` 全局声明
-            resolvers: [ElementPlusResolver()],//element 按需引入
+            // resolvers: [ElementPlusResolver()],//element 按需引入
         }),
         Components({
             resolvers: [ElementPlusResolver()],//element 按需引入
