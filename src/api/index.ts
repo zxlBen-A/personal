@@ -5,5 +5,9 @@ import {get, post, put, del} from '../request/http'
 export const getArticle = (data: object) => {
     return get('/api', data)
 }
+//使用方法
+export const postRequest = (data: object) => {
+    return post('/api', data)
+}
 
 

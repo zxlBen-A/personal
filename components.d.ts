@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./src/components/Article/index.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElImage: typeof import('element-plus/es')['ElImage']
     Gitalks: typeof import('./src/components/Gitalks/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
