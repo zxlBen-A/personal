@@ -23,7 +23,7 @@ export const get = (url: string, params: object, headers={}) => {
  */
 export const post = (url: string, data: object, headers={}) => {
     return request({
-        url: url,
+        url,
         method: 'post',
         data,
         headers
@@ -38,7 +38,7 @@ export const post = (url: string, data: object, headers={}) => {
  */
 export const put = (url: string, data: object, headers={}) => {
     return request({
-        url: url,
+        url,
         method: 'put',
         data,
         headers
@@ -53,7 +53,7 @@ export const put = (url: string, data: object, headers={}) => {
  */
 export const del = (url: string, data: object, headers={}) => {
     return request({
-        url: url,
+        url,
         method: 'delete',
         data,
         headers
