@@ -1,23 +1,22 @@
 <template>
-  <div v-for="item in props.total" :key="item"
-       class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl" @click="see(1)">
+  <div v-for="item in props.total" :key="item.id"
+       class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl" @click="see(item.id)">
     <div class="d-flex ai-center title_cont title" :class="[isShow ? 'mobile-title' : 'pc-title']">
       <div class="title overflow-omit1">
-        我是标题
+        {{ item.art_name }}
       </div>
       <div class="special_column">
-        Vue
+        {{ item.art_type }}
       </div>
     </div>
     <div class="d-flex flex-1 ai-center jc-between">
-      <div class="article_content overflow-omit2">我是内容我是内容我是内容我是
-        内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是
-        内容我是内容 内容我是内容 内容我是内容 内容我是内容 内容我是内容 内容我是内容
+      <div class="article_content overflow-omit2">
+        {{ item.art_description }}
       </div>
-      <el-image src="src/assets/img/article/article.png" fit="cover" class="img_row" v-if="!isShow"/>
+      <el-image :src="item.art_cover" fit="cover" class="img_row" v-if="!isShow"/>
     </div>
     <div class=" publish_events">
-      2022/7/23
+      {{ item.times }}
     </div>
   </div>
 </template>
@@ -29,11 +28,10 @@ import isShow from '../../utils/judgeTheClient'
 const router = useRouter()
 const props = defineProps({
   total: {
-    type: Number,
-    default: 5
+    type: Array,
+    default: []
   }
 })
-
 
 const see = (id: number) => {
   router.push({
@@ -51,6 +49,9 @@ const see = (id: number) => {
   padding: 10px 24px;
   margin-bottom: 14px;
 
+  .title_cont {
+    line-height: 38px;
+  }
 
   .pc-title {
     margin-right: 150px;

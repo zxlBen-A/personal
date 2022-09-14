@@ -11,7 +11,12 @@
     </div>
   </el-affix>
   <!--  html5的文章标签，配合tailwindcss插件-->
-  <article class="prose prose-lg prose-stone max-w-none" :class="[isShow ? 'article_cont_mobile' : 'article_cont']">
+
+  <article v-if="details" class="prose prose-lg prose-stone max-w-none"
+           :class="[isShow ? 'article_cont_mobile' : 'article_cont']">
+    <div class="d-flex jc-center">
+      <h1>{{ details[0].art_title }}</h1>
+    </div>
     <div v-html="article"></div>
   </article>
   <!--  评论-->
@@ -21,32 +26,31 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 import {useRouter} from 'vue-router'
 import {marked} from 'marked'
 import UpperApex from '@/components/UpperApex/index.vue'
 import Gitalks from '@/components/Gitalks/index.vue'; //评论
 import isShow from '../utils/judgeTheClient'
+import {articleDetails} from '../api/index'
 
 const router = useRouter()
 const article = ref<string>('')
-console.log(router.currentRoute.value.query);
+let details = ref<Array<object>>()
+let id = router.currentRoute.value.query.id
 
-axios({
-  method: 'get',
-  url: 'http://localhost:3000/src/assets/marked/VUE3.0学习.md',
-}).then(({data}) => {
-  console.log(data);
-  article.value = marked.parse(data);  // 调用marked()方法，将markdown转换成html
-}).catch(err => {
-  console.log(err)
-})
 
+//获取文章详情
+const detail = async (id) => {
+  let {data} = await articleDetails(id)
+  details.value = data.data
+  article.value = marked.parse(data.data[0].art_content); // 调用marked()方法，将markdown转换成html
+}
 
 const previousStep = () => {
   router.back()
 }
 
+detail(id)
 </script>
 
 <style scoped lang="scss">
