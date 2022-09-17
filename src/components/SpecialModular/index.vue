@@ -1,17 +1,19 @@
 <template>
-  <div v-for="item in 5" class="d-flex ai-center bg-base-100 column_Container rounded-2xl cursor" @click="forward">
+  <div v-for="item in props.total" :key="item.id"
+       class="d-flex ai-center bg-base-100 column_Container rounded-2xl cursor"
+       @click="forward(item.col_name)">
     <div class="img_content" :class="isShow ? 'mobile_img_content':''">
-      <img src="../../assets/img/article/article.png" class="img_row" alt="">
+      <img :src="item.col_cover" class="img_row" alt="">
     </div>
     <div class="d-flex flex-d flex-1 jc-between column_right">
       <div class="title overflow-omit1">
-        你不知道系列as
+        {{ item.col_name }}
       </div>
-      <div class="contents overflow-omit1">致力更新好文章</div>
+      <div class="contents overflow-omit1">{{ item.col_description }}</div>
       <div class="infos d-flex gap-5">
-        <div>2022-7-25</div>
-        <div v-if="!isShow">文章数：7</div>
-        <div v-if="!isShow">阅读量：7000</div>
+        <div>{{ item.col_times }}</div>
+        <div v-if="!isShow">文章数：{{ item.col_columns }}</div>
+        <div v-if="!isShow">阅读量：{{ item.col_reading }}</div>
       </div>
     </div>
   </div>
@@ -21,9 +23,21 @@
 import {useRouter} from "vue-router";
 import isShow from "../../utils/judgeTheClient";
 
+const props = defineProps({
+  total: {
+    type: Array,
+    default: []
+  }
+})
+
 const router = useRouter()
-const forward = () => {
-  router.push('/detail')
+const forward = (specialColumn: string) => {
+  router.push({
+    path: '/detail',
+    query: {
+      specialColumn
+    }
+  })
 }
 </script>
 

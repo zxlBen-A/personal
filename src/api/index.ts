@@ -21,4 +21,11 @@ export const nuggetsArticles = (data = {}) => {
 export const articleDetails = (data: string) => {
     return get2('/articleDetails', data)
 }
-
+//所有专栏
+export const specialColumn = (data: object) => {
+    return post('/specialColumn', data)
+}
+//专栏具体文章
+export const columnQuery = (data: object) => {
+    return post('/columnQuery', data)
+}

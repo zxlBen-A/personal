@@ -24,7 +24,7 @@
           友链
         </div>
         <div class="d-flex flex-d py-2">
-          <div class="d-flex jc-between p-2 rounded-2xl hover:bg-amber-50"
+          <div class="d-flex jc-between p-2 rounded-2xl hover:bg-amber-50 cursor"
                v-for="item in linkCollection" :key="item.id"
                @click="jumpLink(item.blog_url)">
             <div>{{ item.blog_name }}</div>

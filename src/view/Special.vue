@@ -2,7 +2,7 @@
   <!--  pc端-->
   <div class="d-flex" v-if="!isShow">
     <div class="flex-1 mr-16" style="margin-top: 20px;">
-      <SpecialModular></SpecialModular>
+      <SpecialModular :total="total"></SpecialModular>
     </div>
     <div style="margin-top: 20px;">
       <SpecialDescr></SpecialDescr>
@@ -18,8 +18,43 @@
 import SpecialModular from '@/components/SpecialModular/index.vue'
 import SpecialDescr from '@/components/SpecialDescr/index.vue'
 import isShow from '../utils/judgeTheClient'
+import {getScrollHeight, getScrollTop, getWindowHeight} from "../utils/screen";
+import {specialColumn} from '../api/index'
 
-const name = ref<number>(111)
+interface paginationParameters {
+  pageSize: number,
+  pageNum: number
+}
+
+const total = ref<Array<object>>([])
+let isItPossibleToRequest = ref<boolean>(true)
+const pagination = reactive<paginationParameters>({
+  pageSize: 5,
+  pageNum: 1
+})
+
+//进页面就开始监听
+onMounted(() => {
+  window.addEventListener('scroll', load);
+})
+
+const load = () => {
+  //判断是否到页面的底部
+  if (Math.ceil(getScrollTop() + getWindowHeight()) >= getScrollHeight()) {
+    if (!isItPossibleToRequest.value) return
+    pagination.pageNum += 1
+    setTimeout(() => {
+      allColumns()
+    }, 1000)
+  }
+}
+
+const allColumns = async () => {
+  let {data} = await specialColumn(pagination)
+  total.value.push(...data.data)
+  isItPossibleToRequest.value = data.turnOver
+}
+allColumns()
 </script>
 
 <style lang="scss">
