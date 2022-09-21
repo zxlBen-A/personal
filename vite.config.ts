@@ -11,6 +11,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
+            'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
         },
     },
     plugins: [ //插件
@@ -35,5 +36,5 @@ export default defineConfig({
     },
     server: {
         host: '10.101.196.121'
-    },
+    }
 })

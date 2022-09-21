@@ -21,7 +21,7 @@ console.log(name, 1111111111);
 .content {
   max-width: 1450px;
   min-width: 1200px;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 84px);
   padding: 0 48px;
   margin: 0 auto;
 }

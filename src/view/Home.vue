@@ -1,34 +1,35 @@
 <template>
   <!--  pc-->
-  <div class="home-conter d-flex" v-if="!isShow">
+  <div class="home-conter d-flex" v-skeleton.animated="loading" v-if="!isShow">
     <div class="introduce" v-if="information">
       <div class="card w-full p-4 bg-base-100 shadow-xl">
         <figure class="px-3">
-          <label class="swap swap-flip">
+          <label class="swap swap-flip" v-skeleton-item>
             <input type="checkbox"/>
             <div class="swap-off w-32">
-              <img :src="information.data[0].head_portrait" alt="Shoes" class="mask mask-squircle"/>
+              <img :src="information.data[0].head_portrait" v-skeleton-item alt="Shoes" class="mask mask-squircle"/>
             </div>
             <div class="swap-on w-32">
-              <img :src="information.data[0].WeChat" alt="Shoes" class=""/>
+              <img :src="information.data[0].WeChat" v-skeleton-item alt="Shoes" class=""/>
             </div>
           </label>
         </figure>
         <div class="card-body py-4 items-center text-center">
-          <h2 class="card-title">{{ information.data[0].name }}</h2>
-          <p>{{ information.data[0].occupation }}</p>
+          <h2 class="card-title" v-skeleton-item>{{ information.data[0].name }}</h2>
+          <p v-skeleton-item>{{ information.data[0].occupation }}</p>
         </div>
       </div>
       <div class="card p-3 d-flex flex-d bg-base-100 mt-5 shadow-xl">
-        <div class="italic">
+        <div class="italic font-semibold" v-skeleton-item>
           友链
         </div>
         <div class="d-flex flex-d py-2">
-          <div class="d-flex jc-between p-2 rounded-2xl hover:bg-amber-50 cursor"
+          <div class="d-flex jc-between p-2 my-2 rounded-2xl hover:bg-amber-50 cursor"
+               v-skeleton-item
                v-for="item in linkCollection" :key="item.id"
                @click="jumpLink(item.blog_url)">
-            <div>{{ item.blog_name }}</div>
-            <div>{{ item.blog_url }}</div>
+            <div v-skeleton-item>{{ item.blog_name }}</div>
+            <div v-skeleton-item>{{ item.blog_url }}</div>
           </div>
         </div>
       </div>
@@ -39,13 +40,14 @@
     <div class="nuggets">
       <div class="card d-flex flex-d bg-base-100 shadow-xl">
         <div class="italic p-4 pb-0 font-semibold">
-          掘金个人文章
+          <span v-skeleton-item>掘金个人文章</span>
         </div>
         <div class="p-1 px-3">
-          <div v-for="item in nuggetsTotal" :key="item.article_id" class="hover:bg-amber-50 p-3 rounded-2xl cursor"
+          <div v-for="item in nuggetsTotal" :key="item.article_id"
+               class="hover:bg-amber-50 p-2 my-2 rounded-2xl cursor"
                @click="Jump(item.article_id)">
-            <h1 class="title overflow-omit1 font-normal">{{ item.article_info.title }}</h1>
-            <div class="d-flex gap-2 text-gray-600">
+            <h1 class="title overflow-omit1 font-normal" v-skeleton-item>{{ item.article_info.title }}</h1>
+            <div class="d-flex gap-2 text-gray-600" v-skeleton-item>
               <div class="d-flex ai-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
@@ -96,6 +98,7 @@ interface paginationType {
   pageNum: number
 }
 
+let loading = ref<boolean>(false) //骨架屏显示控制
 let information = ref<Array<object>>()
 let nuggetsTotal = ref<Array<object>>()
 let linkCollection = ref<Array<object>>()

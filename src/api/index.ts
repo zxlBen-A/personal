@@ -29,3 +29,20 @@ export const specialColumn = (data: object) => {
 export const columnQuery = (data: object) => {
     return post('/columnQuery', data)
 }
+//总专栏描述
+export const generalColumn = (data = {}) => {
+    return get('/generalColumn', data)
+}
+//单个专栏描述
+export const singleColumn = (data: object) => {
+    return post('/singleColumn', data)
+}
+//介绍
+export const about = (data = {}) => {
+    return get('/about', data)
+}
+//音乐
+export const songSheet = (data = {}) => {
+    return get('/songSheet', data)
+}
+

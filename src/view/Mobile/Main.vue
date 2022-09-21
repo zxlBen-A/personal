@@ -161,6 +161,6 @@ onMounted(() => {
 }
 
 .mobile—content {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 84px);
 }
 </style>

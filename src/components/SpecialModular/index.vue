@@ -1,7 +1,7 @@
 <template>
   <div v-for="item in props.total" :key="item.id"
        class="d-flex ai-center bg-base-100 column_Container rounded-2xl cursor"
-       @click="forward(item.col_name)">
+       @click="forward(item.col_id,item.col_name)">
     <div class="img_content" :class="isShow ? 'mobile_img_content':''">
       <img :src="item.col_cover" class="img_row" alt="">
     </div>
@@ -31,10 +31,11 @@ const props = defineProps({
 })
 
 const router = useRouter()
-const forward = (specialColumn: string) => {
+const forward = (col_id: number, specialColumn: string) => {
   router.push({
     path: '/detail',
     query: {
+      col_id,
       specialColumn
     }
   })

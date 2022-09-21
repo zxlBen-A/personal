@@ -20,7 +20,8 @@
     <div v-html="article"></div>
   </article>
   <!--  评论-->
-  <Gitalks></Gitalks>
+  <div id="disqus_thread"></div>
+  <!--  <Gitalks></Gitalks>-->
   <!--  回到顶部-->
   <UpperApex></UpperApex>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div v-for="item in props.total" :key="item.id"
        class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl" @click="see(item.id)">
-    <div class="d-flex ai-center title_cont title" :class="[isShow ? 'mobile-title' : 'pc-title']">
+    <div class="d-flex ai-center title_cont title" v-skeleton-item :class="[isShow ? 'mobile-title' : 'pc-title']">
       <div class="title overflow-omit1">
         {{ item.art_name }}
       </div>
@@ -10,13 +10,13 @@
       </div>
     </div>
     <div class="d-flex flex-1 ai-center jc-between">
-      <div class="article_content overflow-omit2">
+      <div class="article_content overflow-omit2" v-skeleton-item>
         {{ item.art_description }}
       </div>
-      <el-image :src="item.art_cover" fit="cover" class="img_row" v-if="!isShow"/>
+      <el-image :src="item.art_cover" fit="cover" v-skeleton-item class="img_row" v-if="!isShow"/>
     </div>
     <div class=" publish_events">
-      {{ item.times }}
+      <span v-skeleton-item>{{ item.times }}</span>
     </div>
   </div>
 </template>

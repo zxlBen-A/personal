@@ -5,7 +5,7 @@
       <SpecialModular :total="total"></SpecialModular>
     </div>
     <div style="margin-top: 20px;">
-      <SpecialDescr></SpecialDescr>
+      <SpecialDescr :details="columnGeneralDescription"></SpecialDescr>
     </div>
   </div>
   <!--  移动端-->
@@ -19,7 +19,7 @@ import SpecialModular from '@/components/SpecialModular/index.vue'
 import SpecialDescr from '@/components/SpecialDescr/index.vue'
 import isShow from '../utils/judgeTheClient'
 import {getScrollHeight, getScrollTop, getWindowHeight} from "../utils/screen";
-import {specialColumn} from '../api/index'
+import {specialColumn, generalColumn} from '../api/index'
 
 interface paginationParameters {
   pageSize: number,
@@ -28,6 +28,7 @@ interface paginationParameters {
 
 const total = ref<Array<object>>([])
 let isItPossibleToRequest = ref<boolean>(true)
+const columnGeneralDescription = ref<object>({})
 const pagination = reactive<paginationParameters>({
   pageSize: 5,
   pageNum: 1
@@ -54,7 +55,13 @@ const allColumns = async () => {
   total.value.push(...data.data)
   isItPossibleToRequest.value = data.turnOver
 }
+const columnDescription = async () => {
+  let {data} = await generalColumn()
+  columnGeneralDescription.value = data.data[0]
+  console.log(columnGeneralDescription.value, 1111)
+}
 allColumns()
+columnDescription()
 </script>
 
 <style lang="scss">

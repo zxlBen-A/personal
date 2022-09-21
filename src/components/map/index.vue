@@ -6,13 +6,28 @@
       </div>
       <div class="pr-4" v-if="!isShow">
         <ul class="steps">
-          <li class="step step-primary cursor" @click="flyMap([116.3529465007403, 39.9104894247962])">学校</li>
-          <li class="step step-primary">学校</li>
-          <li class="step step-primary">学校</li>
-          <li class="step step-primary">学校</li>
-          <li data-content="★" class="step step-primary">居住地</li>
-          <li data-content="★" class="step">首钢园</li>
-          <li class="step">上班地点</li>
+          <li data-content="★" class="step step-primary cursor"
+              @click="flyMap([115.83655454867608,35.72657636908178],0)">
+            老家
+          </li>
+          <li data-content="★" class="step step-primary cursor"
+              @click="flyMap([117.92252863384363,36.82759967024367],1)">
+            大学
+          </li>
+          <li data-content="★" class="step step-primary cursor"
+              @click="flyMap([116.20282036695573,39.91163217131498],2)">
+            游乐园
+          </li>
+          <li data-content="★" class="step step-primary cursor" @click="flyMap([116.868961,40.339367],3)">
+            滑雪
+          </li>
+          <li data-content="★" class="step step-primary cursor" @click="flyMap([112.968743,28.192929],4)">
+            长沙
+          </li>
+          <li data-content="★" class="step step-primary cursor"
+              @click="flyMap([116.35271857480234,39.9104424479344],5)">
+            公司
+          </li>
         </ul>
       </div>
     </div>
@@ -49,7 +64,7 @@ onMounted(() => {
     // style: 'mapbox://styles/mapbox/streets-v11',
     center: [116.14926769724161, 39.926016544696296],
     zoom: 16,
-    pitch: 60,
+    pitch: 45,
     bearing: -20,
     antialias: true,
   });
@@ -57,7 +72,7 @@ onMounted(() => {
   loadEvent(map)
   addMaker(map)
   latitudeAndLongitude(map)
-  addMakerImage(map)
+  // addMakerImage(map)
   increase(map)
   fullScreen(map)
   scale(map)
@@ -75,25 +90,70 @@ const data = {
         {
           "type": "Feature",
           "properties": {
-            "description": " <div> <img src=\"src/assets/img/map/bg.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>我是描述</h3> </div>",
-            "icon": "bicycle"
+            "description": " <div> <img src=\"src/assets/img/map/jia.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>我的老家风景</h3> </div>",
+            "icon": "attraction"
           },
           "geometry": {
             "type": "Point",
-            "coordinates": [116.15200972542757, 39.92551284330518]
+            "coordinates": [115.83655454867608, 35.72657636908178]
           }
         },
         {
           "type": "Feature",
           "properties": {
-            "description": " <div> <img src=\"src/assets/img/map/bg.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>我是描述</h3> </div>",
-            "icon": "bicycle"
+            "description": " <div> <img src=\"src/assets/img/map/xue.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>大学快乐时光</h3> </div>",
+            "icon": "attraction"
           },
           "geometry": {
             "type": "Point",
-            "coordinates": [116.15100972542757, 39.92551284230518]
+            "coordinates": [117.92252863384363, 36.82759967024367]
           }
-        }]
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "description": " <div> <img src=\"src/assets/img/map/you.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>万圣节之夜</h3> </div>",
+            "icon": "attraction"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [116.20282036695573, 39.91163217131498]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "description": " <div> <img src=\"src/assets/img/map/hua.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>第一次尝试滑雪的我</h3> </div>",
+            "icon": "attraction"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [116.868961, 40.339367]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "description": " <div> <img src=\"src/assets/img/map/chang.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>毛爷爷容貌</h3> </div>",
+            "icon": "attraction"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [112.968743, 28.192929]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "description": " <div> <img src=\"src/assets/img/map/gong.jpg\" style=\"width: 200px;height: 200px\" alt=\"\"> <h3>工作的地方</h3> </div>",
+            "icon": "attraction"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [116.35271857480234, 39.9104424479344]
+          }
+        },
+      ]
     }
   },
   "layout": {
@@ -158,7 +218,7 @@ const loadEvent = (map: Ref<Map>) => {
 const addMaker = (map: Ref<Map>) => {
   // 这里就是图层部分，可以在官网找到自己希望图层样式
   const popup = new mapboxgl.Popup({closeButton: false, offset: 25}).setText(
-      '这是一个描述信息'
+      '目前居住地'
   );
   marker.value = new mapboxgl.Marker()
       .setLngLat([116.14926769724161, 39.926016544696296])
@@ -241,7 +301,7 @@ const latitudeAndLongitude = (map: Ref<Map>) => {
   })
 }
 //缓慢的飞
-const flyMap = (val: Array<number>) => {
+const flyMap = (val: Array<number>, i: number) => {
   //清空上一个图层
   var popUps = document.getElementsByClassName("mapboxgl-popup");
   if (popUps[0]) popUps[0].remove();//关闭弹框
@@ -251,8 +311,8 @@ const flyMap = (val: Array<number>) => {
   });
   //打开当前点击坐标的弹窗
   new mapboxgl.Popup({closeButton: false})
-      .setHTML(data.source.data.features[0].properties.description as any)
-      .setLngLat(data.source.data.features[0].geometry.coordinates as any)
+      .setHTML(data.source.data.features[i].properties.description as any)
+      .setLngLat(data.source.data.features[i].geometry.coordinates as any)
       .addTo(map.value)
 }
 //全屏
