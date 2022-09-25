@@ -21,7 +21,7 @@
   </article>
   <!--  评论-->
   <div id="disqus_thread"></div>
-  <!--  <Gitalks></Gitalks>-->
+  <Gitalks></Gitalks>
   <!--  回到顶部-->
   <UpperApex></UpperApex>
 </template>
