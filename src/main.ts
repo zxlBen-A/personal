@@ -6,6 +6,7 @@ import piniaPluginPersist from 'pinia-plugin-persist' //持久化存储
 import I18n from './language/i18n'//语言
 import Skeleton from '@x-ui-vue3/skeleton' //骨架屏
 import './styles/index.css'
+import './styles/md.scss'
 import {mouse} from './utils/mouseClick'
 
 mouse()

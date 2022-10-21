@@ -1,5 +1,5 @@
 <template>
-  <el-affix class="thumbtack d-flex ai-center bg-base-100 bg-opacity-10" v-if="isShow">
+  <el-affix class="thumbtack d-flex ai-center bg-base-100 bg-opacity-10 " v-if="isShow">
     <div class="d-flex ai-center cursor-pointer hover:text-gray-500" @click="previousStep">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
            stroke-width="2">
@@ -17,7 +17,10 @@
     <div class="d-flex jc-center">
       <h1>{{ details[0].art_title }}</h1>
     </div>
-    <div v-html="article"></div>
+    <div class="bg-base-100" style="border-radius: 10px;padding: 24px">
+      <Viewer :plugins="plugins" :value="article"><!--      <div v-html="article"></div>--></Viewer>
+    </div>
+
   </article>
   <!--  评论-->
   <div id="disqus_thread"></div>
@@ -33,12 +36,27 @@ import UpperApex from '@/components/UpperApex/index.vue'
 import Gitalks from '@/components/Gitalks/index.vue'; //评论
 import isShow from '../utils/judgeTheClient'
 import {articleDetails} from '../api/index'
+import gfm from '@bytemd/plugin-gfm'
+import {Viewer} from '@bytemd/vue-next'
+import highlight from '@bytemd/plugin-highlight';
+import breaks from "@bytemd/plugin-breaks";
+import gemoji from "@bytemd/plugin-gemoji";
+import mediumZoom from "@bytemd/plugin-medium-zoom";
+import "highlight.js/styles/a11y-light.css"; //引入高亮css
+import 'bytemd/dist/index.min.css';
 
 const router = useRouter()
 const article = ref<string>('')
 let details = ref<Array<object>>()
 let id = router.currentRoute.value.query.id
-
+//插件
+const plugins = [
+  breaks(),
+  gfm(),
+  highlight(),
+  mediumZoom(),
+  gemoji()
+]
 
 //获取文章详情
 const detail = async (id) => {
@@ -55,6 +73,7 @@ detail(id)
 </script>
 
 <style scoped lang="scss">
+
 .article_cont {
   padding: 24px 38px 0 38px;
 }
