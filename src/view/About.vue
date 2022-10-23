@@ -120,7 +120,7 @@ import Music from '@/components/Music/index.vue';
 import isShow from "../utils/judgeTheClient";
 import {about} from '../api/index';
 
-const details = ref<object>()
+const details: any = ref()
 
 const jumpPage = (url: string) => {
   window.open(url)
@@ -131,6 +131,7 @@ const introduction = async () => {
   details.value = data.data[0]
   console.log(details.value, 111)
 }
+
 introduction()
 </script>
 

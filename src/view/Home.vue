@@ -99,11 +99,11 @@ interface paginationType {
 }
 
 let loading = ref<boolean>(false) //骨架屏显示控制
-let information = ref<Array<object>>()
-let nuggetsTotal = ref<Array<object>>()
-let linkCollection = ref<Array<object>>()
-let total = ref<Array<object>>([])
-let isItPossibleToRequest = ref<boolean>(true)
+let information: any = ref<Array<object>>()
+let nuggetsTotal: any = ref<Array<object>>()
+let linkCollection: any = ref<Array<object>>()
+let total: any = ref<Array<object>>([])
+let isItPossibleToRequest: any = ref<boolean>(true)
 let pagination = reactive<paginationType>({
   pageSize: 5,
   pageNum: 1
@@ -132,10 +132,9 @@ const jumpLink = (url: string) => {
 
 //所有文章
 const getArticle = async () => {
-  let {data} = await allArticles(pagination)
+  let {data}: any = await allArticles(pagination)
   total.value.push(...data.data)
   isItPossibleToRequest.value = data.turnOver
-  console.log(total.value, 'xlz')
 }
 const load = () => {
   //判断是否到页面的底部

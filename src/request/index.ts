@@ -4,6 +4,7 @@ const CancelToken: any = axios.CancelToken; // axios 的取消请求
 
 const service = axios.create({
     baseURL: 'http://127.0.0.1:3000/api', // 可以不需要
+    // baseURL: 'http://43.138.75.248:3000/api', // 可以不需要
     timeout: 10000,  // 超时时间
     // withCredentials: true,
     // headers: {

@@ -1,6 +1,7 @@
 <template>
   <div v-for="item in props.total" :key="item.id"
-       class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl" @click="see(item.id)">
+       class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl"
+       @click="jumpTheArticle(item.id)">
     <div class="d-flex ai-center title_cont title" v-skeleton-item :class="[isShow ? 'mobile-title' : 'pc-title']">
       <div class="title overflow-omit1">
         {{ item.art_name }}
@@ -33,7 +34,7 @@ const props = defineProps({
   }
 })
 
-const see = (id: number) => {
+const jumpTheArticle = (id: number) => {
   router.push({
     path: '/articleDetails',
     query: {
