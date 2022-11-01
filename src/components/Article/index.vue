@@ -64,15 +64,15 @@ const jumpTheArticle = (id: number) => {
 
   .title {
     height: 38px;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 600;
+    font-size: 20px;
     //color: #1d2129;
 
     .special_column {
       position: relative;
       margin-left: 7px;
       padding: 0 10px;
-      font-size: 16px;
+      font-size: 14px;
       flex-shrink: 0;
 
       &::before {
@@ -91,7 +91,7 @@ const jumpTheArticle = (id: number) => {
 
   .article_content {
     font-size: 16px;
-    font-weight: 700;
+    //font-weight: 500;
     //color: #888888;
   }
 
@@ -104,8 +104,7 @@ const jumpTheArticle = (id: number) => {
   }
 
   .publish_events {
-    font-size: 16px;
-    //color: #4e5969;
+    font-size: 14px;
   }
 }
 </style>
