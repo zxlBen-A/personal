@@ -2,8 +2,8 @@
   <div class="headers bg-base-100">
     <div class="tabbar d-flex ai-center jc-between bg-base-100">
       <!--      <a class="italic mark">zxlBen</a>-->
-      <ul class="flex-1 menu menu-horizontal bg-base-100 rounded-box p-2">
-        <li @click="cutover(0,'/')" class="mx-2">
+      <ul class="flex-1 menu menu-horizontal bg-base-100 rounded-box p-2 pl-0">
+        <li @click="cutover(0,'/')" class="mx-2 ml-0">
           <a :class="contrast === 0 ? 'active' : ''">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
@@ -130,17 +130,17 @@
           <div
               class="dropdown-content  bg-slate-100 text-base-content rounded-t-box rounded-b-box top-px mt-16 w-56 overflow-y-auto shadow-2xl">
             <ul class="menu menu-compact gap-1 p-3" tabindex="0">
-              <li>
+              <li @click="changeLang('en',0)">
                 <button class="flex" :class="selectedTopic == 0 ? 'active' : ''"><img loading="lazy" width="20"
                                                                                       height="20" alt="English"
                                                                                       src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1ec-1f1e7.svg">
-                  <span @click="changeLang('en',0)" class="flex flex-1 justify-between">English </span></button>
+                  <span class="flex flex-1 justify-between">English </span></button>
               </li>
-              <li>
+              <li @click="changeLang('cn',1)">
                 <button class="flex" :class="selectedTopic == 1 ? 'active' : ''"><img loading="lazy" width="20"
                                                                                       height="20" alt="中文"
                                                                                       src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1e8-1f1f3.svg">
-                  <span @click="changeLang('cn',1)" class="flex flex-1 justify-between">中文</span>
+                  <span class="flex flex-1 justify-between">中文</span>
                 </button>
               </li>
             </ul>
@@ -169,7 +169,7 @@ const contrast = ref(main.count)
 //主题切换
 const {locale} = useI18n()
 //选中主题
-const selectedTopic = ref(store.selectedTopic)
+const selectedTopic = computed(() => store.selectedTopic)
 
 //menu选中的切换
 const cutover = (val: number, url: string) => {

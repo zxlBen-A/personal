@@ -19,7 +19,15 @@
         <div class="stats w-full shadow">
           <div class="stat">
             <div class="stat-title">阅读总数量</div>
-            <div class="stat-value">{{ shu(parseInt(props.details.col_volume)) }}</div>
+            <div class="stat-value">
+              {{ shu(parseInt(props.details.col_volume)) }}
+            </div>
+          </div>
+        </div>
+        <div class="stats w-full shadow" v-if="props.details.specialColumn">
+          <div class="stat">
+            <div class="stat-title">专栏创建时间</div>
+            <div class="stat-value">{{ props.details.col_times }}</div>
           </div>
         </div>
       </div>
@@ -28,16 +36,14 @@
 </template>
 
 <script setup lang="ts">
-
 interface parameterInterface {
-
 }
 
 const props = defineProps({
   details: {
     type: Object,
-    default: {}
-  }
+    default: {},
+  },
 })
 //数字格式化
 const shu = (val) => {
@@ -46,5 +52,4 @@ const shu = (val) => {
 </script>
 
 <style scoped lang="scss">
-
 </style>

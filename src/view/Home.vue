@@ -29,7 +29,8 @@
                v-for="item in linkCollection" :key="item.id"
                @click="jumpLink(item.blog_url)">
             <div v-skeleton-item>{{ item.blog_name }}</div>
-            <div v-skeleton-item>{{ item.blog_url }}</div>
+            <!--            <div v-skeleton-item>{{ item.blog_url }}</div>-->
+            <div v-skeleton-item>😃😁🤓</div>
           </div>
         </div>
       </div>

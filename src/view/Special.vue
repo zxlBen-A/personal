@@ -58,7 +58,6 @@ const allColumns = async () => {
 const columnDescription = async () => {
   let {data} = await generalColumn()
   columnGeneralDescription.value = data.data[0]
-  console.log(columnGeneralDescription.value, 1111)
 }
 allColumns()
 columnDescription()

@@ -66,10 +66,11 @@ const columnData = async () => {
   let {data} = await singleColumn({id: router.currentRoute.value.query.col_id})
   let digital = data.data[0]
   singleMessage.value = {
-    col_name:digital.col_name,
-    col_describe:digital.col_description,
-    col_article:digital.col_columns,
-    col_volume:digital.col_reading,
+    col_name: digital.col_name,
+    col_describe: digital.col_description,
+    col_article: digital.col_columns,
+    col_volume: digital.col_reading,
+    col_times: digital.col_times,
     specialColumn,
   }
 }
