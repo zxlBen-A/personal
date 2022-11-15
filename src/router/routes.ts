@@ -1,7 +1,7 @@
 import {RouteRecordRaw} from "vue-router";
 import isShow from '../utils/judgeTheClient'
 
-let pcView = () => import('@/view/main.vue')
+let pcView = () => import('@/view/Main.vue')
 let MoView = () => import('@/view/Mobile/Main.vue')
 let isMobile = isShow ? MoView : pcView
 

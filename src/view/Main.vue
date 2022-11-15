@@ -1,5 +1,6 @@
 <template>
   <div class="d-flex flex-d">
+    <!--    <alert></alert>-->
     <leftSide></leftSide>
     <div style="width: 100%" class="bg-base-200">
       <div class="content">
@@ -11,10 +12,7 @@
 
 <script lang="ts" setup>
 import leftSide from '@/components/leftSide/index.vue'
-
-const name = $ref('hhh')
-console.log(name, 1111111111);
-
+import alert from '@/components/Alert/index.vue'
 </script>
 
 <style scoped lang="scss">
