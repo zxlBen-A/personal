@@ -39,7 +39,7 @@ import UpperApex from '@/components/UpperApex/index.vue'
 import Gitalks from '@/components/Gitalks/index.vue'; //评论
 import isShow from '../utils/judgeTheClient'
 import {articleDetails} from '../api/index'
-import "highlight.js/styles/a11y-light.css"; //引入高亮css
+import "highlight.js/styles/a11y-light.css"; //高亮css
 import 'bytemd/dist/index.min.css';
 
 

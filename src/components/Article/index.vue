@@ -46,6 +46,7 @@ const jumpTheArticle = (id: number) => {
 
 <style scoped lang="scss">
 .article_component {
+  width: auto;
   height: 180px;
   padding: 10px 24px;
   margin-bottom: 14px;

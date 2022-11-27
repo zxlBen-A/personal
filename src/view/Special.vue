@@ -4,7 +4,7 @@
     <div class="flex-1 mr-16" style="margin-top: 20px;">
       <SpecialModular :total="total"></SpecialModular>
     </div>
-    <div style="margin-top: 20px;">
+    <div class="theColumnSection">
       <SpecialDescr :details="columnGeneralDescription"></SpecialDescr>
     </div>
   </div>
@@ -66,5 +66,12 @@ columnDescription()
 <style lang="scss">
 .mobile-special {
   margin: 20px;
+}
+
+.theColumnSection {
+  position: sticky;
+  top: 74px;
+  height: 350px;
+  margin-top: 20px;
 }
 </style>

@@ -6,9 +6,12 @@
       <div class="bg-base-100 rounded-2xl">
         <article class="prose prose-lg prose-stone max-w-none p-4">
           <h3 class="italic">介绍</h3>
-          <span>
-            {{ details.introduce }}
-          </span>
+          <article class="prose lg:prose-xl">
+            <div>本人Web前端开发工作时间两年半，目前任职在某某国企，担任前端开发的任务</div>
+            <div></div>
+            <div>本人Web前端开发工作时间两年半</div>
+            <p>目前任职在某某国企，担任前端开发的任务</p>
+          </article>
           <h3>
             经历
           </h3>

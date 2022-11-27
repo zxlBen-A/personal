@@ -12,7 +12,7 @@ import './styles/md.scss'
 import './styles/APlayer.min.css'
 
 mouse()
-forbidF12()
+// forbidF12()
 
 const store = createPinia()
 store.use(piniaPluginPersist)

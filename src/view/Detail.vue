@@ -4,7 +4,7 @@
     <div class="flex-1 mr-16">
       <Article :total="total"></Article>
     </div>
-    <div>
+    <div class="theColumnSection">
       <SpecialDescr :details="singleMessage"></SpecialDescr>
     </div>
   </div>
@@ -85,5 +85,11 @@ columnData()
 
 .mobile-detail {
   margin: 20px;
+}
+
+.theColumnSection {
+  position: sticky;
+  top: 74px;
+  height: 350px;
 }
 </style>

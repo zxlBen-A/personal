@@ -81,10 +81,8 @@
     </div>
   </div>
   <!--Mobile-->
-  <div class="d-flex" v-else>
-    <div style="margin: 20px">
-      <Article :total="total"></Article>
-    </div>
+  <div class="mobile" v-else>
+    <Article :total="total"></Article>
   </div>
 </template>
 
@@ -184,5 +182,9 @@ onUnmounted(() => {
     width: 260px;
     flex-shrink: 0;
   }
+}
+
+.mobile {
+  margin: 20px;
 }
 </style>
