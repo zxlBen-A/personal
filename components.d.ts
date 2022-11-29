@@ -18,8 +18,8 @@ declare module '@vue/runtime-core' {
       RouterLink: typeof import('vue-router')['RouterLink']
       RouterView: typeof import('vue-router')['RouterView']
       SpecialDescr: typeof import('./src/components/SpecialDescr/index.vue')['default']
-    SpecialModular: typeof import('./src/components/SpecialModular/index.vue')['default']
-    UpperApex: typeof import('./src/components/UpperApex/index.vue')['default']
+      SpecialModular: typeof import('./src/components/SpecialModular/index.vue')['default']
+      UpperApex: typeof import('./src/components/UpperApex/index.vue')['default']
   }
 }
 

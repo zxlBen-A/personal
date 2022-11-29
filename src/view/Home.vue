@@ -33,6 +33,8 @@
             <div v-skeleton-item>😃😁🤓</div>
           </div>
         </div>
+        <a href="https://beian.miit.gov.cn/" target="_blank">您的备案号</a>
+        <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2022033642号-1</a>
       </div>
     </div>
     <div class="articleContent flex-1">
