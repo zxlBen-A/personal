@@ -8,7 +8,8 @@ import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
 
 const gitalk = new Gitalk({
-  id: location.pathname,      // 文章id
+  id: location.search,      // 文章id
+  // id: location.pathname,/      // 文章id
   clientID: 'b57edafd807521a50039',
   clientSecret: 'f399d6f40297b2eac8b03b0215436cb759fef80c',//注册的id
   repo: 'commentSystem',      // 仓库名
