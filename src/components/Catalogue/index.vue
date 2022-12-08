@@ -46,7 +46,6 @@ function getTitles() {
   let levels = ["h1", "h2", "h3"];
 
   let articleElement = document.querySelector(props.container);
-  console.log(articleElement, 111);
   if (!articleElement) {
     return titles;
   }

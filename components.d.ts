@@ -7,8 +7,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Alert: typeof import('./src/components/Alert/index.vue')['default']
     Article: typeof import('./src/components/Article/index.vue')['default']
-    Catalogue: typeof import('./src/components/index.vue/Catalogue.vue')['default']
-    Disqus: typeof import('./src/components/disqus/index.vue')['default']
+    Catalogue: typeof import('./src/components/Catalogue/index.vue')['default']
+    Disqus: typeof import('./src/components/Disqus/index.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElImage: typeof import('element-plus/es')['ElImage']
     Gitalks: typeof import('./src/components/Gitalks/index.vue')['default']

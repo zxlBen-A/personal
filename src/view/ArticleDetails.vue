@@ -25,7 +25,8 @@
     </div>
   </article>
   <!--  评论-->
-  <Gitalks></Gitalks>
+  <Disqus></Disqus>
+  <!--  <Gitalks></Gitalks>-->
   <!--  回到顶部-->
   <UpperApex></UpperApex>
 </template>
@@ -39,7 +40,8 @@ import highlight from '@bytemd/plugin-highlight';
 import breaks from "@bytemd/plugin-breaks";
 import gemoji from "@bytemd/plugin-gemoji";
 import UpperApex from '@/components/UpperApex/index.vue'
-import Gitalks from '@/components/Gitalks/index.vue'; //评论
+// import Gitalks from '@/components/Gitalks/index.vue'; //评论
+import Disqus from '@/components/Disqus/index.vue'; //评论
 import Catalogue from '@/components/Catalogue/index.vue';//目录
 import isShow from '../utils/judgeTheClient'
 import {articleDetails} from '../api/index'
