@@ -36,8 +36,8 @@ const props = defineProps({
 
 const jumpTheArticle = (id: number) => {
   router.push({
-    path: '/articleDetails',
-    query: {
+    name: 'articleDetails',
+    params: {
       id: id
     }
   })

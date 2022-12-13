@@ -52,7 +52,7 @@ import 'bytemd/dist/index.min.css';
 const router = useRouter()
 const article: Ref<string> = ref('')
 let details: Ref<any[]> = ref([])
-let id = router.currentRoute.value.query.id
+let id = computed(() => router.currentRoute.value.params.id)
 const container: Ref<string> = ref('.markdown')
 
 //插件
@@ -72,7 +72,7 @@ watch(article, () => {
 
 //获取文章详情
 const detail = async (id) => {
-  let {data} = await articleDetails(id)
+  let {data} = await articleDetails(id.value)
   details.value = data.data
   article.value = data.data[0].art_content
 }

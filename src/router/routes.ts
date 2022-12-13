@@ -47,12 +47,12 @@ export const routes: Array<RouteRecordRaw> = [
                 }
             },
             {
-                path: 'articleDetails', //动态路由文章详情
+                path: 'articleDetails/:id',
                 name: 'articleDetails',
                 component: () => import('@/view/ArticleDetails.vue'),
                 meta: {
                     keepAlive: true, // 组件需要缓存
-                }
+                },
             },
             {
                 path: 'detail', //专栏文章

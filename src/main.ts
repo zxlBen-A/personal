@@ -9,6 +9,7 @@ import {mouse} from './utils/mouseClick'
 import {forbidF12} from './utils/forbid'
 import './styles/index.css'
 import './styles/md.scss'
+import './styles/waline.css'
 import './styles/APlayer.min.css'
 
 mouse()

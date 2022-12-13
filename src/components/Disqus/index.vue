@@ -1,24 +1,36 @@
 <template>
-  <div id="comment"></div>
+  <div id="waline" class="comment"></div>
 </template>
 
-<script setup lang="ts">
-let disq = new iDisqus('comment', {
-  forum: '博客',
-  api: 'http://api.fooleap.org/disqus', //需要换成后台地址
-  site: 'http://zxlben.top',
-  mode: 1,
-  timeout: 3000,
-  init: true
-});
-disq.count() //查看评论数
-console.log(disq, 111)
+<script setup>
+import {init} from '@/utils/useWaline.mjs';
+
+onMounted(() => {
+  init({
+    el: '#waline',
+    serverURL: 'https://www.zxlben.xyz/',
+    // 设置 emoji 为微博与哔哩哔哩
+    emoji: [
+      '//unpkg.com/@waline/emojis@1.1.0/weibo',
+      '//unpkg.com/@waline/emojis@1.1.0/bilibili',
+      '//unpkg.com/@waline/emojis@1.1.0/bmoji',
+      '//unpkg.com/@waline/emojis@1.1.0/qq',
+      '//unpkg.com/@waline/emojis@1.1.0/tieba',
+      '//unpkg.com/@waline/emojis@1.1.0/tw-emoji',
+    ],
+    // 表情包搜索
+    search: true,
+    // 文章反应
+    reaction: true,
+    // 浏览量统计
+    pageview: false,
+    // 评论数统计
+    comment: false,
+  });
+})
 </script>
-
 <style scoped lang="scss">
-@import "../../../public/disqus/iDisqus.css";
-
-#comment {
-  height: 200px;
+.comment {
+  margin: 18px 38px;
 }
 </style>

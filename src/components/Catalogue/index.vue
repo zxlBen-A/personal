@@ -5,7 +5,7 @@
         目录
       </div>
       <div>
-        <span class="progress">{{ progress }}</span>
+        <span class="progress">{{ progress }}%</span>
       </div>
     </div>
     <div class="catalog-content">
@@ -27,7 +27,8 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type {Ref} from 'vue'
 
 const props = defineProps({
   container: {
@@ -38,11 +39,12 @@ const props = defineProps({
 
 //根据props变化进行重新渲染
 let titles = computed(() => getTitles());
-let currentTitle = reactive({});
-let progress = ref(0);
+const length = titles.value.length;
+let currentTitle: any = reactive({});
+let progress: Ref<number> = ref(0);
 
 function getTitles() {
-  let titles = [];
+  let titles: any[] = [];
   let levels = ["h1", "h2", "h3"];
 
   let articleElement = document.querySelector(props.container);
@@ -63,13 +65,13 @@ function getTitles() {
   }
   let serialNumbers = levels.map(() => 0);
   for (let i = 0; i < elements.length; i++) {
-    const element = elements[i];
+    const element: any = elements[i];
     let tagName = element.tagName.toLowerCase();
     let level = levels.indexOf(tagName);
     if (level == -1) continue;
 
     let id = tagName + "-" + element.innerText + "-" + i;
-    let node = {
+    const node: any = {
       id,
       level,
       parent: null,
@@ -79,7 +81,7 @@ function getTitles() {
     };
 
     if (titles.length > 0) {
-      let lastNode = titles.at(-1);
+      let lastNode: any = titles.at(-1);
 
       // 遇到子标题
       if (lastNode.level < node.level) {
@@ -118,10 +120,10 @@ function getTitles() {
 
 // 监听滚动事件并更新样式
 window.addEventListener("scroll", function () {
-  progress.value = parseInt((window.scrollY / document.documentElement.scrollHeight) * 100) + "%";
-  let visibleTitles = [];
+  progress.value = parseInt(`${(window.scrollY / document.documentElement.scrollHeight) * 100}`);
+  let visibleTitles: any[] = [];
 
-  for (let i = titles.length - 1; i >= 0; i--) {
+  for (let i = length - 1; i >= 0; i--) {
     const title = titles[i];
     if (title.scrollTop <= window.scrollY) {
       if (currentTitle.id === title.id) return;
@@ -141,7 +143,7 @@ window.addEventListener("scroll", function () {
       }
 
       // 折叠其余节点
-      for (const t of titles) {
+      for (const t of titles.value) {
         if (!visibleTitles.includes(t)) {
           setChildrenVisible(t, false);
         }
@@ -162,7 +164,6 @@ function setChildrenVisible(title, isVisible) {
 function scrollToView(scrollTop) {
   window.scrollTo({top: scrollTop, behavior: "smooth"});
 }
-
 </script>
 
 <style lang="scss" scoped>
