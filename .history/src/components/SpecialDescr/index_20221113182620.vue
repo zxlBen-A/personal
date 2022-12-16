@@ -1,27 +1,19 @@
 <template>
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
-      <h2 class="card-title">
-        {{ props.details.col_name }}
-      </h2>
-      <p class="p-2">
-        {{ props.details.col_describe }}
-      </p>
+      <h2 class="card-title">{{ props.details.col_name }}</h2>
+      <p class="p-2">{{ props.details.col_describe }}</p>
       <div class="card-actions">
-        <div v-if="!props.details.specialColumn" class="stats w-full shadow">
+        <div class="stats w-full shadow" v-if="!props.details.specialColumn">
           <div class="stat">
             <div class="stat-title">专栏总数量</div>
-            <div class="stat-value">
-              {{ props.details.col_total }}
-            </div>
+            <div class="stat-value">{{ props.details.col_total }}</div>
           </div>
         </div>
         <div class="stats w-full shadow">
           <div class="stat">
             <div class="stat-title">文章总数量</div>
-            <div class="stat-value">
-              {{ props.details.col_article }}
-            </div>
+            <div class="stat-value">{{ props.details.col_article }}</div>
           </div>
         </div>
         <div class="stats w-full shadow">
@@ -32,12 +24,10 @@
             </div>
           </div>
         </div>
-        <div v-if="props.details.specialColumn" class="stats w-full shadow">
+        <div class="stats w-full shadow" v-if="props.details.specialColumn">
           <div class="stat">
             <div class="stat-title">专栏创建时间</div>
-            <div class="stat-value">
-              {{ props.details.col_times }}
-            </div>
+            <div class="stat-value">{{ props.details.col_times }}</div>
           </div>
         </div>
       </div>
@@ -55,7 +45,9 @@ const props = defineProps({
   }
 })
 //数字格式化
-const shu = (val) => val.toLocaleString()
+const shu = (val) => {
+  return val.toLocaleString()
+}
 </script>
 
 <style scoped lang="scss"></style>

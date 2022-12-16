@@ -1,9 +1,9 @@
 <template>
-  <div id="waline" class="comment"></div>
+  <div id="waline" class="comment" />
 </template>
 
 <script setup>
-import {init} from '@/utils/useWaline.mjs';
+import { init } from '@/utils/useWaline.mjs'
 
 onMounted(() => {
   init({
@@ -16,7 +16,7 @@ onMounted(() => {
       '//unpkg.com/@waline/emojis@1.1.0/bmoji',
       '//unpkg.com/@waline/emojis@1.1.0/qq',
       '//unpkg.com/@waline/emojis@1.1.0/tieba',
-      '//unpkg.com/@waline/emojis@1.1.0/tw-emoji',
+      '//unpkg.com/@waline/emojis@1.1.0/tw-emoji'
     ],
     // 表情包搜索
     search: true,
@@ -25,8 +25,8 @@ onMounted(() => {
     // 浏览量统计
     pageview: false,
     // 评论数统计
-    comment: false,
-  });
+    comment: false
+  })
 })
 </script>
 <style scoped lang="scss">

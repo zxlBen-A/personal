@@ -1,4 +1,4 @@
-import {cn} from './cn'
-import {en} from './en'
+import { cn } from './cn'
+import { en } from './en'
 
-export default {cn, en}
+export default { cn, en }

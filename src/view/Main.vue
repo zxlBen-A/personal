@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex flex-d">
     <!--    <alert></alert>-->
-    <leftSide></leftSide>
+    <leftSide />
     <div style="width: 100%" class="bg-base-200">
       <div class="content">
-        <router-view></router-view>
+        <router-view />
       </div>
     </div>
   </div>

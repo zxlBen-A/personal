@@ -1,13 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{vue,js,ts}"],
+  content: ['./src/**/*.{vue,js,ts}'],
   theme: {
-    extend: {},
+    extend: {}
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require("daisyui")
-  ],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     themes: [
       // {
@@ -19,8 +16,9 @@ module.exports = {
       //         "base-100": "#ffffff",
       //     }
       // },
-      "garden",
-      "dark",
-      "retro"],
+      'garden',
+      'dark',
+      'retro'
+    ]
   }
 }

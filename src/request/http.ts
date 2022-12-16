@@ -1,4 +1,4 @@
-import request from './index';
+import request from './index'
 
 /**
  * 封装get请求
@@ -6,14 +6,13 @@ import request from './index';
  * @param {Object} params 请求参数
  * @param {Object} headers 请求需要设置的header头
  */
-export const get = (url: string, params: object, headers = {}) => {
-    return request({
-        url,
-        method: 'get',
-        params,
-        headers
-    });
-}
+export const get = (url: string, params: object, headers = {}) =>
+  request({
+    url,
+    method: 'get',
+    params,
+    headers
+  })
 
 /**
  * 封装get请求
@@ -21,13 +20,12 @@ export const get = (url: string, params: object, headers = {}) => {
  * @param {Object} params 请求参数
  * @param {Object} headers 请求需要设置的header头
  */
-export const get2 = (url: string, params: string, headers = {}) => {
-    return request({
-        url: `${url}/${params}`,
-        method: 'get',
-        headers
-    });
-}
+export const get2 = (url: string, params: string, headers = {}) =>
+  request({
+    url: `${url}/${params}`,
+    method: 'get',
+    headers
+  })
 
 /**
  * 封装post请求
@@ -35,14 +33,13 @@ export const get2 = (url: string, params: string, headers = {}) => {
  * @param {Object} data 请求参数
  * @param {Object} headers 请求的header头
  */
-export const post = (url: string, data: object, headers = {}) => {
-    return request({
-        url,
-        method: 'post',
-        data,
-        headers
-    });
-}
+export const post = (url: string, data: object, headers = {}) =>
+  request({
+    url,
+    method: 'post',
+    data,
+    headers
+  })
 
 /**
  * 封装put请求
@@ -50,14 +47,13 @@ export const post = (url: string, data: object, headers = {}) => {
  * @param {Object} data 请求参数
  * @param {Object} headers 请求设置的header头
  */
-export const put = (url: string, data: object, headers = {}) => {
-    return request({
-        url,
-        method: 'put',
-        data,
-        headers
-    });
-}
+export const put = (url: string, data: object, headers = {}) =>
+  request({
+    url,
+    method: 'put',
+    data,
+    headers
+  })
 
 /**
  * 封装delete请求
@@ -65,13 +61,10 @@ export const put = (url: string, data: object, headers = {}) => {
  * @param {Object} data 请求参数
  * @param {Object} headers 请求设置的header头
  */
-export const del = (url: string, data: object, headers = {}) => {
-    return request({
-        url,
-        method: 'delete',
-        data,
-        headers
-    });
-}
-
-
+export const del = (url: string, data: object, headers = {}) =>
+  request({
+    url,
+    method: 'delete',
+    data,
+    headers
+  })

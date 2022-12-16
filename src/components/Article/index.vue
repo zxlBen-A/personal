@@ -1,8 +1,15 @@
 <template>
-  <div v-for="item in props.total" :key="item.id"
-       class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl"
-       @click="jumpTheArticle(item.id)">
-    <div class="d-flex ai-center title_cont title" v-skeleton-item :class="[isShow ? 'mobile-title' : 'pc-title']">
+  <div
+    v-for="item in props.total"
+    :key="item.id"
+    class="article_component d-flex flex-d cursor-grabbing bg-base-100 shadow-xl rounded-2xl"
+    @click="jumpTheArticle(item.id)"
+  >
+    <div
+      v-skeleton-item
+      class="d-flex ai-center title_cont title"
+      :class="[isShow ? 'mobile-title' : 'pc-title']"
+    >
       <div class="title overflow-omit1">
         {{ item.art_name }}
       </div>
@@ -11,19 +18,19 @@
       </div>
     </div>
     <div class="d-flex flex-1 ai-center jc-between">
-      <div class="article_content overflow-omit2" v-skeleton-item>
+      <div v-skeleton-item class="article_content overflow-omit2">
         {{ item.art_description }}
       </div>
-      <el-image :src="item.art_cover" fit="cover" v-skeleton-item class="img_row" v-if="!isShow"/>
+      <el-image v-if="!isShow" v-skeleton-item :src="item.art_cover" fit="cover" class="img_row" />
     </div>
-    <div class=" publish_events">
+    <div class="publish_events">
       <span v-skeleton-item>{{ item.times }}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 import isShow from '../../utils/judgeTheClient'
 
 const router = useRouter()
@@ -85,7 +92,7 @@ const jumpTheArticle = (id: number) => {
         width: 1px;
         height: 14px;
         background: #747786;
-        content: " ";
+        content: ' ';
       }
     }
   }

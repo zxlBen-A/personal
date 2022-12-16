@@ -1,7 +1,6 @@
 <template>
-  <img src="../assets/img/article/404.png" alt="">
+  <img src="../assets/img/article/404.png" alt="" />
 </template>
-
 
 <style scoped>
 img {

@@ -1,30 +1,29 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const CancelToken: any = axios.CancelToken; // axios 的取消请求
+const { CancelToken } = axios // axios 的取消请求
 
 const service = axios.create({
-    // baseURL: 'http://127.0.0.1:3000/api', // 可以不需要
-    baseURL: 'http://zxlben.top/api', // 可以不需要
-    timeout: 10000,  // 超时时间
-    // withCredentials: true,
-    // headers: {
-    //     'version': '1.0.1', // 接口的版本号
-    //     'Authorization': 'Bearer ' + token, // 向后台发送的token
-    //     get: {
-    //         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-    //     },
-    //     post: {
-    //         'Content-Type': 'application/json;charset=utf-8'
-    //     }
-    // },
-    // validateStatus () {
-    //     return true;
-    // },
-
-});
+  // baseURL: 'http://127.0.0.1:3000/api', // 可以不需要
+  baseURL: 'http://zxlben.top/api', // 可以不需要
+  timeout: 10000 // 超时时间
+  // withCredentials: true,
+  // headers: {
+  //     'version': '1.0.1', // 接口的版本号
+  //     'Authorization': 'Bearer ' + token, // 向后台发送的token
+  //     get: {
+  //         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+  //     },
+  //     post: {
+  //         'Content-Type': 'application/json;charset=utf-8'
+  //     }
+  // },
+  // validateStatus () {
+  //     return true;
+  // },
+})
 
 // 防止重复提交 利用axios的cancelToken
-let pending: any[] = []; // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+let pending: any[] = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 
 /**
  * 取消重复请求
@@ -32,18 +31,17 @@ let pending: any[] = []; // 声明一个数组用于存储每个ajax请求的取
  * @param f
  */
 const removePending: any = (config: any, f: any) => {
-    const flgUrl = config.url;
-    if (pending.indexOf(flgUrl) !== -1) {
-        if (f) {
-            f('取消重复请求');
-        } else {
-            pending.splice(pending.indexOf(flgUrl), 1); // 删除记录
-        }
+  const flgUrl = config.url
+
+  if (pending.indexOf(flgUrl) !== -1) {
+    if (f) {
+      f('取消重复请求')
     } else {
-        if (f) {
-            pending.push(flgUrl);
-        }
+      pending.splice(pending.indexOf(flgUrl), 1) // 删除记录
     }
+  } else if (f) {
+    pending.push(flgUrl)
+  }
 }
 
 /**
@@ -86,5 +84,4 @@ const removePending: any = (config: any, f: any) => {
 //     }
 // );
 
-export default service;
-
+export default service
