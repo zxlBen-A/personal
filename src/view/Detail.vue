@@ -1,5 +1,5 @@
 <template>
-  <!--  pc-->
+  <!--  移动端 -->
   <div v-if="!isShow" class="d-flex columnData">
     <div class="flex-1 mr-16">
       <Article :total="total" />

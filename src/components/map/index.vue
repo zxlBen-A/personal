@@ -195,8 +195,8 @@ const loadEvent = (map: Ref<Map>) => {
     // Insert the layer beneath any symbol layer.
     const { layers } = map.value.getStyle()
     const labelLayerId = layers.find(
-      (layer) => layer.type === 'symbol' && layer.layout['text-field']
-    ).id
+        (layer) => layer.type === 'symbol' && layer.layout['text-field']
+    )?.id
 
     // The 'building' layer in the Mapbox Streets
     // vector tileset contains building height data

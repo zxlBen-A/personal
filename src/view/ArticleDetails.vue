@@ -41,8 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import type{ Ref } from 'vue'
-import { useRouter } from 'vue-router'
+import type {Ref} from 'vue'
+import {useRouter} from 'vue-router'
 import gfm from '@bytemd/plugin-gfm'
 import { Viewer } from '@bytemd/vue-next'
 import highlight from '@bytemd/plugin-highlight'

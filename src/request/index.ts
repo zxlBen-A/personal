@@ -3,8 +3,8 @@ import axios from 'axios'
 const { CancelToken } = axios // axios 的取消请求
 
 const service = axios.create({
-  // baseURL: 'http://127.0.0.1:3000/api', // 可以不需要
-  baseURL: 'http://zxlben.top/api', // 可以不需要
+  baseURL: 'http://127.0.0.1:3000/api', // 可以不需要
+  // baseURL: 'http://zxlben.top/api', // 可以不需要
   timeout: 10000 // 超时时间
   // withCredentials: true,
   // headers: {
@@ -23,7 +23,7 @@ const service = axios.create({
 })
 
 // 防止重复提交 利用axios的cancelToken
-let pending: any[] = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+const pending: any[] = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 
 /**
  * 取消重复请求
@@ -33,7 +33,7 @@ let pending: any[] = [] // 声明一个数组用于存储每个ajax请求的取�
 const removePending: any = (config: any, f: any) => {
   const flgUrl = config.url
 
-  if (pending.indexOf(flgUrl) !== -1) {
+  if (pending.includes(flgUrl)) {
     if (f) {
       f('取消重复请求')
     } else {
