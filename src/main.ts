@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersist from 'pinia-plugin-persist' // 持久化存储
-import Skeleton from '@x-ui-vue3/skeleton' // 骨架屏
 import App from './App.vue'
 import router from './router/index'
 import I18n from './language/i18n' // 语言
@@ -21,4 +20,4 @@ store.use(piniaPluginPersist)
 
 const app = createApp(App)
 
-app.use(router).use(store).use(I18n).use(Skeleton).mount('#app')
+app.use(router).use(store).use(I18n).mount('#app')

@@ -1,6 +1,5 @@
 <template>
   <div class="d-flex flex-d">
-    <!--    <alert></alert>-->
     <leftSide />
     <div style="width: 100%" class="bg-base-200">
       <div class="content">
@@ -12,7 +11,6 @@
 
 <script lang="ts" setup>
 import leftSide from '@/components/leftSide/index.vue'
-import alert from '@/components/Alert/index.vue'
 </script>
 
 <style scoped lang="scss">

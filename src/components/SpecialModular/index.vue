@@ -1,21 +1,21 @@
 <template>
   <div
-    v-for="item in props.total"
-    :key="item.id"
-    class="d-flex ai-center bg-base-100 column_Container rounded-2xl cursor"
-    @click="forward(item.col_id, item.col_name)"
+      v-for="item in props.total"
+      :key="item.id"
+      class="d-flex ai-center bg-base-100 column_Container rounded-2xl cursor"
+      @click="forward(item.col_id, item.col_name)"
   >
-    <div class="img_content" :class="isShow ? 'mobile_img_content' : ''">
-      <img :src="item.col_cover" class="img_row" alt="" />
+    <div :class="isShow ? 'mobile_img_content' : ''" class="img_content">
+      <img :src="item.col_cover" alt="" class="img_row" />
     </div>
     <div class="d-flex flex-d flex-1 jc-between column_right">
       <div class="title overflow-omit1">
         {{ item.col_name }}
       </div>
-      <div class="contents overflow-omit1">
+      <div class="contents text-current overflow-omit1">
         {{ item.col_description }}
       </div>
-      <div class="infos d-flex gap-5">
+      <div class="infos text-gray-400 d-flex gap-5">
         <div>{{ item.col_times }}</div>
         <div v-if="!isShow">文章数：{{ item.col_columns }}</div>
         <div v-if="!isShow">阅读量：{{ item.col_reading }}</div>
@@ -24,30 +24,30 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-import isShow from '../../utils/judgeTheClient'
+<script lang="ts" setup>
+import { useRouter } from "vue-router";
+import isShow from "../../utils/judgeTheClient";
 
 const props = defineProps({
   total: {
     type: Array,
     default: []
   }
-})
+});
 
-const router = useRouter()
+const router = useRouter();
 const forward = (col_id: number, specialColumn: string) => {
   router.push({
-    path: '/detail',
+    path: "/detail",
     query: {
       col_id,
       specialColumn
     }
-  })
-}
+  });
+};
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .column_Container {
   width: 100%;
   height: 160px;
@@ -79,17 +79,14 @@ const forward = (col_id: number, specialColumn: string) => {
 
     .title {
       font-size: 18px;
-      color: #1d2129;
     }
 
     .contents {
       font-size: 16px;
-      color: #4e5969;
     }
 
     .infos {
-      @extend .contents;
-      color: #86909c;
+      font-size: 14px;
     }
   }
 }

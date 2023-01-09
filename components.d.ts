@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
     Disqus: typeof import('./src/components/Disqus/index.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElImage: typeof import('element-plus/es')['ElImage']
+    ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
+    ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     LeftSide: typeof import('./src/components/leftSide/index.vue')['default']
     Map: typeof import('./src/components/map/index.vue')['default']
