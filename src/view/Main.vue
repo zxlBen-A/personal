@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-d">
     <leftSide />
-    <div style="width: 100%" class="bg-base-200">
+    <div class="bg-base-200">
       <div class="content">
         <router-view />
       </div>
@@ -10,15 +10,15 @@
 </template>
 
 <script lang="ts" setup>
-import leftSide from '@/components/leftSide/index.vue'
+import leftSide from "@/components/leftSide/index.vue";
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .content {
   max-width: 1450px;
   min-width: 1200px;
   min-height: calc(100vh - 64px);
   padding: 0 48px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 </style>

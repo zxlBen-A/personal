@@ -1,18 +1,18 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import {createApp} from 'vue'
+import {createPinia} from 'pinia'
 import piniaPluginPersist from 'pinia-plugin-persist' // 持久化存储
 import App from './App.vue'
 import router from './router/index'
 import I18n from './language/i18n' // 语言
-import { mouse } from './utils/mouseClick'
-import { forbidF12 } from './utils/forbid'
+import {mouse} from './utils/mouseClick'
+import {forbidF12} from './utils/forbid'
 import './styles/index.css'
 import './styles/md.scss'
 import './styles/waline.css'
 import './styles/APlayer.min.css'
 
 mouse()
-forbidF12()
+// forbidF12()
 
 const store = createPinia()
 

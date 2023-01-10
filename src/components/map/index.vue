@@ -190,7 +190,6 @@ const data = {
 //3d效果
 const loadEvent = (map: Ref<Map>) => {
   map.value.on("load", () => {
-    // Insert the layer beneath any symbol layer.
     const { layers } = map.value.getStyle();
     const labelLayerId = layers.find(
         (layer) => layer.type === "symbol" && layer.layout["text-field"]

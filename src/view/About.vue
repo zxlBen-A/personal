@@ -1,6 +1,6 @@
 <template>
   <!--  pc-->
-  <div v-if="!isShow && details" class="d-flex" style="margin: 20px 0">
+  <div v-if="!isShow && details" class="d-flex">
     <!--   介绍-->
     <div class="flex-1 about">
       <div class="bg-base-100 rounded-2xl">

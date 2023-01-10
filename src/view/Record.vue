@@ -1,6 +1,6 @@
 <template>
   <!--  pc-->
-  <div v-if="!isShow" class="w-full" style="margin-top: 20px">
+  <div v-if="!isShow" class="w-full">
     <mapIndex d-height="82vh" d-width="100%" />
   </div>
   <!--  移动端-->

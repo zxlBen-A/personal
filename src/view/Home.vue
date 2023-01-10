@@ -129,6 +129,8 @@ import Article from "@/components/Article/index.vue";
 import { getScrollHeight, getScrollTop, getWindowHeight } from "../utils/screen";
 import isShow from "../utils/judgeTheClient";
 import { personalInformation, friendshipChain, allArticles, nuggetsArticles } from "../api/index";
+import { useCalculatedAltitude } from "../utils/useCalculatedAltitude";
+import type { Ref } from "vue";
 
 interface paginationType {
   pageSize: number;
@@ -136,10 +138,12 @@ interface paginationType {
 }
 
 let information: any = ref<Array<object>>();
-let nuggetsTotal: any = ref<Array<object>>();
-let linkCollection: any = ref<Array<object>>();
+let nuggetsTotal: any = ref<Array<object>>([]);
+let linkCollection: any = ref<Array<object>>([]);
 let total: any = ref<Array<object>>([]);
 let isItPossibleToRequest: any = ref<boolean>(true);
+const effectiveLength: Ref<string | number> = ref("0");
+const rightAdsorptionDistance: Ref<string | number> = ref("0");
 let pagination = reactive<paginationType>({
   pageSize: 5,
   pageNum: 1
@@ -162,7 +166,7 @@ const links = async () => {
     data: { data: newData }
   } = await friendshipChain();
   linkCollection.value = newData;
-  console.log(newData, 1111);
+  effectiveLength.value = useCalculatedAltitude(linkCollection.value.length, 56, 428);
 };
 const jumpLink = (url: string) => {
   window.open(`${url}`);
@@ -194,8 +198,8 @@ const nuggets = async () => {
       data: { data: newData }
     }
   } = await nuggetsArticles();
-
   nuggetsTotal.value = newData;
+  rightAdsorptionDistance.value = useCalculatedAltitude(nuggetsTotal.value.length, 72, 94);
 };
 const Jump = (url: string) => {
   window.open(`https://juejin.cn/post/${url}`);
@@ -213,19 +217,23 @@ onUnmounted(() => {
 
 <style lang="scss">
 .home-conter {
-  padding-top: 20px;
-
   .articleContent {
     margin: 0 20px;
   }
 
   .introduce {
     width: 260px;
+    height: 500px;
+    position: sticky;
+    top: v-bind('effectiveLength');
     flex-shrink: 0;
   }
 
   .nuggets {
     width: 260px;
+    height: 500px;
+    position: sticky;
+    top: v-bind('rightAdsorptionDistance');
     flex-shrink: 0;
   }
 }

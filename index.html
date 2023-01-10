@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link href="/favicon.ico" rel="icon" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      name="Cache-Control"
-      content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
-    />
-    <script src="./APlayer.min.js"></script>
-    <script src="./Meting.min.js"></script>
-    <title>赵小磊Ben</title>
-    <script>
-      var _hmt = _hmt || []
-      ;(function () {
-        var hm = document.createElement('script')
-        hm.src = 'https://hm.baidu.com/hm.js?11f0f1c1a32e88a5bd6de2b2f6624725'
-        var s = document.getElementsByTagName('script')[0]
-        s.parentNode.insertBefore(hm, s)
-      })()
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/src/main.ts" type="module"></script>
-  </body>
+<head>
+  <meta charset="UTF-8"/>
+  <link href="/favicon.ico" rel="icon"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0" name="Cache-Control"/>
+  <script src="./APlayer.min.js"></script>
+  <script src="./Meting.min.js"></script>
+  <title>赵小磊Ben</title>
+  <script>
+    var _hmt = _hmt || []
+    ;(function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?11f0f1c1a32e88a5bd6de2b2f6624725";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0 !important;
+    }
+
+    .gif {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--  白屏加载内容-->
+  <div class="gif">
+    <img alt="" src="src/assets/img/article/loding.gif" style="height: 300px">
+  </div>
+</div>
+<script src="/src/main.ts" type="module"></script>
+</body>
 </html>

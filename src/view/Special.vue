@@ -1,7 +1,7 @@
 <template>
   <!--  pc端-->
   <div v-if="!isShow" class="d-flex">
-    <div class="flex-1 mr-16" style="margin-top: 20px">
+    <div class="flex-1 mr-16">
       <SpecialModular :total="total" />
     </div>
     <div class="theColumnSection">
@@ -14,58 +14,58 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import SpecialModular from '@/components/SpecialModular/index.vue'
-import SpecialDescr from '@/components/SpecialDescr/index.vue'
-import isShow from '../utils/judgeTheClient'
-import { getScrollHeight, getScrollTop, getWindowHeight } from '../utils/screen'
-import { specialColumn, generalColumn } from '../api/index'
+<script lang="ts" setup>
+import SpecialModular from "@/components/SpecialModular/index.vue";
+import SpecialDescr from "@/components/SpecialDescr/index.vue";
+import isShow from "../utils/judgeTheClient";
+import { getScrollHeight, getScrollTop, getWindowHeight } from "../utils/screen";
+import { specialColumn, generalColumn } from "../api/index";
 
 interface paginationParameters {
-  pageSize: number
-  pageNum: number
+  pageSize: number;
+  pageNum: number;
 }
 
-const total = ref<Array<object>>([])
-let isItPossibleToRequest = ref<boolean>(true)
-const columnGeneralDescription = ref<object>({})
+const total = ref<Array<object>>([]);
+let isItPossibleToRequest = ref<boolean>(true);
+const columnGeneralDescription = ref<object>({});
 const pagination = reactive<paginationParameters>({
   pageSize: 5,
   pageNum: 1
-})
+});
 
 //进页面就开始监听
 onMounted(() => {
-  window.addEventListener('scroll', load)
-})
+  window.addEventListener("scroll", load);
+});
 
 const load = () => {
   //判断是否到页面的底部
   if (Math.ceil(getScrollTop() + getWindowHeight()) >= getScrollHeight()) {
     if (!isItPossibleToRequest.value) {
-      return
+      return;
     }
-    pagination.pageNum += 1
+    pagination.pageNum += 1;
     setTimeout(() => {
-      allColumns()
-    }, 1000)
+      allColumns();
+    }, 1000);
   }
-}
+};
 
 const allColumns = async () => {
-  let { data } = await specialColumn(pagination)
+  let { data } = await specialColumn(pagination);
 
-  total.value.push(...data.data)
-  isItPossibleToRequest.value = data.turnOver
-}
+  total.value.push(...data.data);
+  isItPossibleToRequest.value = data.turnOver;
+};
 const columnDescription = async () => {
-  let { data } = await generalColumn()
+  let { data } = await generalColumn();
 
-  columnGeneralDescription.value = data.data[0]
-}
+  columnGeneralDescription.value = data.data[0];
+};
 
-allColumns()
-columnDescription()
+allColumns();
+columnDescription();
 </script>
 
 <style lang="scss">
@@ -77,6 +77,5 @@ columnDescription()
   position: sticky;
   top: 74px;
   height: 350px;
-  margin-top: 20px;
 }
 </style>
