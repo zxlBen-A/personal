@@ -20,6 +20,8 @@ import SpecialDescr from "@/components/SpecialDescr/index.vue";
 import isShow from "../utils/judgeTheClient";
 import { getScrollHeight, getScrollTop, getWindowHeight } from "../utils/screen";
 import { specialColumn, generalColumn } from "../api/index";
+import { useCalculatedAltitude } from "../utils/useCalculatedAltitude";
+import type { Ref } from "vue";
 
 interface paginationParameters {
   pageSize: number;
@@ -29,6 +31,7 @@ interface paginationParameters {
 const total = ref<Array<object>>([]);
 let isItPossibleToRequest = ref<boolean>(true);
 const columnGeneralDescription = ref<object>({});
+let adsorb: Ref<string | number> = ref("0");
 const pagination = reactive<paginationParameters>({
   pageSize: 5,
   pageNum: 1
@@ -60,8 +63,8 @@ const allColumns = async () => {
 };
 const columnDescription = async () => {
   let { data } = await generalColumn();
-
   columnGeneralDescription.value = data.data[0];
+  adsorb.value = useCalculatedAltitude(0, 0, 578);
 };
 
 allColumns();
@@ -75,7 +78,7 @@ columnDescription();
 
 .theColumnSection {
   position: sticky;
-  top: 74px;
+  top: v-bind('adsorb');
   height: 350px;
 }
 </style>

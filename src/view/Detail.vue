@@ -14,59 +14,62 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-import Article from '@/components/Article/index.vue'
-import SpecialDescr from '@/components/SpecialDescr/index.vue'
-import isShow from '../utils/judgeTheClient'
-import { getScrollHeight, getScrollTop, getWindowHeight } from '../utils/screen'
-import { columnQuery, singleColumn } from '../api'
+<script lang="ts" setup>
+import { useRouter } from "vue-router";
+import Article from "@/components/Article/index.vue";
+import SpecialDescr from "@/components/SpecialDescr/index.vue";
+import isShow from "../utils/judgeTheClient";
+import { getScrollHeight, getScrollTop, getWindowHeight } from "../utils/screen";
+import { columnQuery, singleColumn } from "../api";
+import { useCalculatedAltitude } from "../utils/useCalculatedAltitude";
+import type { Ref } from "vue";
 
 interface paginationParameters {
-  pageSize: number
-  pageNum: number
-  condition: any
+  pageSize: number;
+  pageNum: number;
+  condition: any;
 }
 
-const router = useRouter()
-let { specialColumn } = router.currentRoute.value.query
-const total = ref<Array<object>>([])
-let isItPossibleToRequest = ref<boolean>(true)
-const singleMessage = ref<object>()
+const router = useRouter();
+let { specialColumn } = router.currentRoute.value.query;
+const total = ref<Array<object>>([]);
+let isItPossibleToRequest = ref<boolean>(true);
+const singleMessage = ref<object>();
+const adsorb: Ref<string | number> = ref("0");
 const pagination = reactive<paginationParameters>({
   pageSize: 5,
   pageNum: 1,
   condition: specialColumn
-})
+});
 
 //进页面就开始监听
 onMounted(() => {
-  window.addEventListener('scroll', load)
-})
+  window.addEventListener("scroll", load);
+});
 
 const load = () => {
   //判断是否到页面的底部
   if (Math.ceil(getScrollTop() + getWindowHeight()) >= getScrollHeight()) {
     if (!isItPossibleToRequest.value) {
-      return
+      return;
     }
-    pagination.pageNum += 1
+    pagination.pageNum += 1;
     setTimeout(() => {
-      allColumns()
-    }, 1000)
+      allColumns();
+    }, 1000);
   }
-}
+};
 
 const allColumns = async () => {
-  let { data } = await columnQuery(pagination)
+  let { data } = await columnQuery(pagination);
 
-  total.value.push(...data.data)
-  isItPossibleToRequest.value = data.turnOver
-}
+  total.value.push(...data.data);
+  isItPossibleToRequest.value = data.turnOver;
+};
 //对应专栏数据
 const columnData = async () => {
-  let { data } = await singleColumn({ id: router.currentRoute.value.query.col_id })
-  let digital = data.data[0]
+  let { data } = await singleColumn({ id: router.currentRoute.value.query.col_id });
+  let digital = data.data[0];
 
   singleMessage.value = {
     col_name: digital.col_name,
@@ -75,11 +78,12 @@ const columnData = async () => {
     col_volume: digital.col_reading,
     col_times: digital.col_times,
     specialColumn
-  }
-}
+  };
+  adsorb.value = useCalculatedAltitude(0, 0, 452);
+};
 
-allColumns()
-columnData()
+allColumns();
+columnData();
 </script>
 
 <style lang="scss">
@@ -93,7 +97,7 @@ columnData()
 
 .theColumnSection {
   position: sticky;
-  top: 74px;
+  top: v-bind("adsorb");
   height: 350px;
 }
 </style>
