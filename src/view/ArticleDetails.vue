@@ -14,7 +14,9 @@
             <a class="introduce">赵小磊Ben</a>
           </div>
         </div>
-        <Viewer :plugins="plugins" :value="article" />
+        <article>
+          <Viewer :plugins="plugins" :value="article" />
+        </article>
       </div>
       <!--    目录-->
       <Catalogue :container="container" class="directory" />
@@ -67,7 +69,6 @@ watch(
 //获取文章详情
 const detail = async (id) => {
   let { data } = await articleDetails(id.value);
-
   details.value = data.data;
   article.value = data.data[0].art_content;
 };

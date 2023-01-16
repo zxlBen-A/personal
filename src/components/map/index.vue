@@ -1,51 +1,44 @@
 <template>
   <div class="d-flex">
-    <div ref="mapContainer" class="map-container rounded-2xl" />
+    <div ref="mapContainer" class="map-container  rounded-2xl" />
     <div>
-      <ul class="steps">
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([115.83655454867608, 35.72657636908178], 0)"
-        >
-          老家
-        </li>
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([117.92252863384363, 36.82759967024367], 1)"
-        >
-          大学
-        </li>
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([116.20282036695573, 39.91163217131498], 2)"
-        >
-          游乐园
-        </li>
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([116.868961, 40.339367], 3)"
-        >
-          滑雪
-        </li>
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([112.968743, 28.192929], 4)"
-        >
-          长沙
-        </li>
-        <li
-            class="step step-primary cursor"
-            data-content="★"
-            @click="flyMap([116.35271857480234, 39.9104424479344], 5)"
-        >
-          公司
-        </li>
-      </ul>
+      <div>我的足迹</div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([115.83655454867608, 35.72657636908178], 0)"
+      >
+        老家
+      </div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([117.92252863384363, 36.82759967024367], 1)"
+      >
+        大学
+      </div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([116.20282036695573, 39.91163217131498], 2)"
+      >
+        游乐园
+      </div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([116.868961, 40.339367], 3)"
+      >
+        滑雪
+      </div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([112.968743, 28.192929], 4)"
+      >
+        长沙
+      </div>
+      <div
+          class="step step-primary cursor"
+          @click="flyMap([116.35271857480234, 39.9104424479344], 5)"
+      >
+        公司
+      </div>
     </div>
   </div>
 </template>
@@ -78,7 +71,7 @@ onMounted(() => {
   map.value = new mapboxgl.Map({
     container: mapContainer.value, //地图容器
     style: "mapbox://styles/zxlben/clcoihjv8002v14nygkw348tk",
-    // style: "mapbox://styles/mapbox/light-v10",
+    // style: "mapbox://styles/mapbox/divght-v10",
     center: [116.14926769724161, 39.926016544696296],
     zoom: 12,
     pitch: 45,
